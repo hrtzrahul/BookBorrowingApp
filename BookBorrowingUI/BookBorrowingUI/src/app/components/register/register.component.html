@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-12">
+<a href="/" class="btn btn-secondary float-right">
+  <i class="fas fa-arrow-left"></i> Back
+</a> 
+</div>
+</div>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <i class="fa fa-user-circle" style="font-size:48px;"></i>
+      </div>
+      <form [formGroup]="registerForm" class="add" autocomplete="off" (ngSubmit)="CollectUser()" *ngIf="registerForm">
+        <div>
+          <input type="text" id="Name" name="Name" required class="form-control fadeIn second"
+            formControlName="Name" placeholder="Name">
+          <div class="form-text text-span" *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+            Name is required
+          </div>
+          <div class="form-text text-span" *ngIf="Name.errors?.['maxlength'] && (Name.touched || Name.dirty)">
+            Maximum 50 characters allowed
+          </div>
+        </div>
+        <div>
+          <input type="text" id="userName" name="username" required class="form-control fadeIn second" formControlName="userName"
+            placeholder="UserName">
+          <div class="form-text text-span" *ngIf="UserName.errors?.['required'] && (UserName.touched || UserName.dirty)">
+            Username is required
+          </div>
+        </div>
+       
+        <div>
+          <input type="password" id="password" name="Password" required class="form-control fadeIn third"
+            formControlName="password" placeholder="Password">
+          <div class="form-text text-span" *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
+            Password is required
+          </div>
+          <div class="form-text text-span" *ngIf="Password.errors?.['minlength'] && (Password.touched || Password.dirty)">
+            Minimum 8 characters required
+          </div>
+          <div class="form-text text-span" *ngIf="Password.errors?.['pattern'] && (Password.touched || Password.dirty)">
+            Password must contain at least one letter, one number, and one special character
+          </div>
+        </div>
+        <div *ngIf="registerError" class="text-danger">{{ registerError }}</div>
+        <input type="submit" class="fadeIn fourth" value="Sign Up">
+      </form>
+      <div id="formFooter">
+        <a class="underlineHover" routerLink="/Login">Already have an account</a>
+      </div>
+    </div>
+  </div>

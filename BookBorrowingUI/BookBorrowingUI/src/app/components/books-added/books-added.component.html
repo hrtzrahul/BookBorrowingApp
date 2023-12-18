@@ -1,0 +1,38 @@
+<div class="container" style="margin-top: 80px;">
+  <div class="row">
+    <div class="col-12">
+  <a href="/" class="btn btn-secondary float-right">
+    <i class="fas fa-arrow-left"></i> Back
+</a> 
+</div>
+</div> 
+    <table class="table table-striped">
+      <!-- Table headers -->
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Book Details</th>
+       
+        </tr>
+      </thead>
+      <!-- Table body with *ngFor -->
+      <tbody>
+        <tr *ngFor="let book of bookCollection; let i = index">
+            <!-- ... other columns ... -->
+          <td>{{ i + 1 }}</td>
+          <td>{{ book.name }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.genre }}</td>
+          <div class="center-items">
+            <a [routerLink]="['/ViewLentBooks', book.id]" class='fas fa-book' style='font-size:23px; color: black;'></a>
+          </div>
+          <!-- Actions based on user email -->
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
